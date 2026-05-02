@@ -40,6 +40,13 @@ npx skills add noendings/jx-vibe-tools@jx-meta
 npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
 ```
 
+**⚠️ 安装后必须重启 Claude Code**：
+- 按 `Ctrl+C` 退出当前会话
+- 重新运行 `claude` 启动
+- 然后才能使用 `/jx-gzjj` 等指令
+
+> 如果重启后仍显示 `Unknown command`，尝试运行：`npx skills list` 查看是否安装成功
+
 ---
 
 ## 技能清单

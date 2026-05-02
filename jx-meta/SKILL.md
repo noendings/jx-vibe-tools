@@ -78,6 +78,9 @@ done
 - jx-merge   → /jx-merge
 - jx-tone    → /jx-tone, /jx-tone-pua
 
+⚠️ 重要：请重启 Claude Code 使技能生效
+   按 Ctrl+C 退出，然后重新运行 claude
+
 使用指南：
 - 工作交接：/jx-gzjj
 - 新人填坑：/jx-xrtk
