@@ -25,11 +25,19 @@ npx skills add noendings/jx-vibe-tools@jx-merge
 npx skills add noendings/jx-vibe-tools@jx-tone
 ```
 
-### 安装全部
+### 一键安装全部（推荐）
 
 ```bash
-# 逐个安装上面的
-# 或者使用 meta-installer（开发中）
+# 安装元安装器
+npx skills add noendings/jx-vibe-tools@jx-meta
+
+# 运行一键安装
+/jx-install-all
+```
+
+或使用元安装器自动安装全部：
+```bash
+npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
 ```
 
 ---
@@ -38,6 +46,7 @@ npx skills add noendings/jx-vibe-tools@jx-tone
 
 | 技能 | 指令 | 功能 |
 |------|------|------|
+| **jx-meta** | `/jx-install-all` | 一键安装全部 JX Vibe Tools |
 | **jx-gzjj** | `/jx-gzjj` | 生成交接文档 |
 | **jx-xrtk** | `/jx-xrtk` | 读取交接文档，继续工作 |
 | **jx-branch** | `/jx-branch-open`<br>`/jx-branch-done` | 开启/完成分支研究 |
