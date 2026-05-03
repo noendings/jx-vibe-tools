@@ -4,6 +4,22 @@
 
 ---
 
+## ⚠️ 重要：正确的安装方式
+
+**不要直接安装仓库！** 以下命令是 **错误的**：
+```bash
+❌ npx skills add noendings/jx-vibe-tools          # 错误！不会工作
+❌ npx skills add https://github.com/noendings/jx-vibe-tools  # 错误！
+```
+
+**正确的方式**：必须指定子目录（`@子目录` 语法）
+```bash
+✅ npx skills add noendings/jx-vibe-tools@jx-gzjj   # 单个安装
+✅ npx skills add noendings/jx-vibe-tools@jx-meta   # 安装一键安装器
+```
+
+---
+
 ## 安装
 
 ### 安装单个技能
@@ -45,7 +61,11 @@ npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
 - 重新运行 `claude` 启动
 - 然后才能使用 `/jx-gzjj` 等指令
 
-> 如果重启后仍显示 `Unknown command`，尝试运行：`npx skills list` 查看是否安装成功
+> 如果重启后仍显示 `Unknown command`，说明你安装了错误的版本（没加 `@子目录`），请卸载后重新安装：
+> ```bash
+> npx skills remove jx-vibe-tools -g  # 卸载错误的
+> npx skills add noendings/jx-vibe-tools@jx-gzjj -g  # 安装正确的
+> ```
 
 ---
 
