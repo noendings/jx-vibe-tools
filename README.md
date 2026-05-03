@@ -4,52 +4,25 @@
 
 ---
 
-## 快速安装
+## 安装
 
-### 方法一：一键安装（推荐）
-
-```bash
-npx skills add noendings/jx-vibe-tools@jx-meta -g
-```
-
-重启 Claude Code 后运行：
-```
-/jx-install-all
-```
-
-### 方法二：复制给 Claude
-
-把这段话发给 Claude Code：
-
-```
-帮我全局安装 JX Vibe Tools 技能套装：
-
-npx skills add noendings/jx-vibe-tools@jx-meta -g -y
-npx skills add noendings/jx-vibe-tools@jx-gzjj -g -y
-npx skills add noendings/jx-vibe-tools@jx-xrtk -g -y
-npx skills add noendings/jx-vibe-tools@jx-branch -g -y
-npx skills add noendings/jx-vibe-tools@jx-tone -g -y
-
-安装完重启 Claude Code。
-```
-
-### 方法三：逐个安装
+**逐个安装**（推荐，清晰可控）：
 
 ```bash
-npx skills add noendings/jx-vibe-tools@jx-gzjj -g   # 工作交接
-npx skills add noendings/jx-vibe-tools@jx-xrtk -g   # 接手工作
-npx skills add noendings/jx-vibe-tools@jx-branch -g # 分支研究
-npx skills add noendings/jx-vibe-tools@jx-tone -g   # 口语结构化
+npx skills add noendings/jx-vibe-tools@jx-gzjj -g
+npx skills add noendings/jx-vibe-tools@jx-branch -g
+npx skills add noendings/jx-vibe-tools@jx-xrtk -g
+npx skills add noendings/jx-vibe-tools@jx-tone -g
 ```
 
-**⚠️ Windows PowerShell 用户**：不要用 `&&`，分各行执行或直接用 CMD。
+**⚠️ Windows PowerShell 用户**：分4行逐个执行，不要复制整块。
 
 ---
 
 ## 安装后重启
 
 ```bash
-Ctrl+C      # 退出 Claude
+Ctrl+C      # 退出 Claude Code
 claude      # 重新启动
 ```
 
@@ -62,7 +35,7 @@ claude      # 重新启动
 | `/jx-gzjj` | 生成交接文档 |
 | `/jx-xrtk` | 读取交接，继续工作 |
 | `/jx-branch-open` | 开启分支研究会话 |
-| `/jx-branch-done` | 完成并归档研究 |
+| `/jx-branch-done` | 完成并归档研究（支持导入已有成果） |
 | `/jx-merge` | 合并研究成果到主项目 |
 | `/jx-tone` | 口语转结构化 |
 
@@ -76,7 +49,7 @@ claude      # 重新启动
 
 # 新窗口（专项研究）
 → 研究、测试、记录
-→ /jx-branch-done
+→ /jx-branch-done（可选择导入已有研究）
 
 # 主窗口（合并成果）
 → /jx-merge
