@@ -13,16 +13,24 @@
 ```
 
 **正确的方式**：必须指定子目录（`@子目录` 语法）
-```bash
-✅ npx skills add noendings/jx-vibe-tools@jx-gzjj   # 单个安装
-✅ npx skills add noendings/jx-vibe-tools@jx-meta   # 安装一键安装器
+
+### 最简单的方法（推荐）
+**将以下文字发给 Claude Code，让他帮您安装：**
+
+```
+帮我全局安装 JX Vibe Tools 技能套装，使用以下命令逐个安装：
+
+npx skills add noendings/jx-vibe-tools@jx-meta -g -y
+npx skills add noendings/jx-vibe-tools@jx-gzjj -g -y
+npx skills add noendings/jx-vibe-tools@jx-xrtk -g -y
+npx skills add noendings/jx-vibe-tools@jx-branch -g -y
+npx skills add noendings/jx-vibe-tools@jx-merge -g -y
+npx skills add noendings/jx-vibe-tools@jx-tone -g -y
+
+安装完成后重启 Claude Code，然后测试 /jx-gzjj 是否可用。
 ```
 
----
-
-## 安装
-
-### 安装单个技能
+### 或者手动安装单个技能
 
 ```bash
 # 工作交接
