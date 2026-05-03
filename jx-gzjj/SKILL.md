@@ -253,14 +253,51 @@ git diff --name-only HEAD~1
 
 ### Step 7: ⭐ 创建/更新项目总览文档
 
-**文档位置**：`{PROJECT_ROOT}/jx-project-overview-roadmap.md`
+#### 7.1 显式选择存储位置
 
-**作用**：新AI接手时**必须先看**这个文档，建立全局认知，再阅读具体交接文档。
+**使用 AskUserQuestion 询问用户**：
 
-#### 7.1 读取已有总览文档（如有）
+```
+请选择项目总览文档的存储位置：
+
+A. 当前对话所在文件夹
+   → 适合：子项目/子需求场景
+   → 路径：{当前目录}/.jx_skill/
+
+B. 项目根目录（推荐）
+   → 适合：统一管理整个项目
+   → 路径：{项目根目录}/.jx_skill/
+```
+
+**项目根目录检测方法**（仅用于展示）：
+1. 向上查找包含 `.git/`、`package.json`、`CLAUDE.md`、`README.md` 的目录
+2. 若找不到，使用当前工作目录
+
+**注意**：最终选择权交给用户，不自动决定。
+
+#### 7.2 根据选择初始化目录
 
 ```bash
-OVERVIEW_FILE="$PROJECT_ROOT/jx-project-overview-roadmap.md"
+# 根据用户选择设置 BASE_DIR
+# BASE_DIR="$USER_SELECTED_PATH"
+
+JX_SKILL_DIR="$BASE_DIR/.jx_skill"
+mkdir -p "$JX_SKILL_DIR"
+
+# 确保 .gitignore
+if [ -f "$BASE_DIR/.gitignore" ]; then
+  grep -q "^.jx_skill/" "$BASE_DIR/.gitignore" || echo ".jx_skill/" >> "$BASE_DIR/.gitignore"
+else
+  echo ".jx_skill/" > "$BASE_DIR/.gitignore"
+fi
+
+echo "JX_SKILL_DIR=$JX_SKILL_DIR"
+```
+
+#### 7.3 读取已有总览文档
+
+```bash
+OVERVIEW_FILE="$JX_SKILL_DIR/jx-project-overview-roadmap.md"
 if [ -f "$OVERVIEW_FILE" ]; then
   echo "EXISTING_OVERVIEW=$OVERVIEW_FILE"
 else
@@ -268,19 +305,20 @@ else
 fi
 ```
 
-#### 7.2 提取本次变更信息
+#### 7.4 提取本次变更信息
 
 从当前对话提取：
 - 新增/修改的文件
 - 验证结果
 - 当前卡点
 
-#### 7.3 更新总览文档内容
+#### 7.5 更新总览文档内容
 
 ```markdown
 # 项目总览与路线图
 
 > 最后更新：{timestamp} | 累计交接：{X} 次
+> 存储位置：{BASE_DIR}
 
 ---
 
@@ -433,10 +471,11 @@ fi
 > 4. 运行 `/jx-xrtk` 开始接手工作
 ```
 
-#### 7.4 输出确认
+#### 7.6 输出确认
 
 ```
-✅ 总览文档已更新：{PROJECT_ROOT}/jx-project-overview-roadmap.md
+✅ 总览文档已更新：{JX_SKILL_DIR}/jx-project-overview-roadmap.md
+📁 存储位置：{BASE_DIR}/.jx_skill/
 📊 累计交接次数：{X}
 📄 最新交接：time_{X}_xxx.md
 ```
