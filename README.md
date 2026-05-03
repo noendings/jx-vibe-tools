@@ -1,110 +1,65 @@
 # JX Vibe Tools
 
-**螺旋上升式 AI 协同开发工作流** — 支持多 AI 窗口间的无缝任务交接。
+**AI 协同开发工作流** — 让多个 AI 窗口像团队一样协作。
+
+```bash
+npx skills add noendings/jx-vibe-tools
+```
+
+然后用 `/jx` 开始工作。
 
 ---
 
-## ⚠️ 重要：正确的安装方式
+## 一句话说明
 
-**不要直接安装仓库！** 以下命令是 **错误的**：
-```bash
-❌ npx skills add noendings/jx-vibe-tools          # 错误！不会工作
-❌ npx skills add https://github.com/noendings/jx-vibe-tools  # 错误！
-```
-
-**正确的方式**：必须指定子目录（`@子目录` 语法）
-
-### 最简单的方法（推荐）
-**将以下文字发给 Claude Code，让他帮您安装：**
-
-```
-帮我全局安装 JX Vibe Tools 技能套装，使用以下命令逐个安装：
-
-npx skills add noendings/jx-vibe-tools@jx-meta -g -y
-npx skills add noendings/jx-vibe-tools@jx-gzjj -g -y
-npx skills add noendings/jx-vibe-tools@jx-xrtk -g -y
-npx skills add noendings/jx-vibe-tools@jx-branch -g -y
-npx skills add noendings/jx-vibe-tools@jx-merge -g -y
-npx skills add noendings/jx-vibe-tools@jx-tone -g -y
-
-安装完成后重启 Claude Code，然后测试 /jx-gzjj 是否可用。
-```
-
-### 或者手动安装单个技能
-
-```bash
-# 工作交接
-npx skills add noendings/jx-vibe-tools@jx-gzjj
-
-# 接手工作
-npx skills add noendings/jx-vibe-tools@jx-xrtk
-
-# 分支研究
-npx skills add noendings/jx-vibe-tools@jx-branch
-
-# 合并成果
-npx skills add noendings/jx-vibe-tools@jx-merge
-
-# 口语结构化
-npx skills add noendings/jx-vibe-tools@jx-tone
-```
-
-### 一键安装全部（推荐）
-
-```bash
-# 安装元安装器
-npx skills add noendings/jx-vibe-tools@jx-meta
-
-# 运行一键安装
-/jx-install-all
-```
-
-或使用元安装器自动安装全部：
-```bash
-npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
-```
-
-**⚠️ 安装后必须重启 Claude Code**：
-- 按 `Ctrl+C` 退出当前会话
-- 重新运行 `claude` 启动
-- 然后才能使用 `/jx-gzjj` 等指令
-
-> 如果重启后仍显示 `Unknown command`，说明你安装了错误的版本（没加 `@子目录`），请卸载后重新安装：
-> ```bash
-> npx skills remove jx-vibe-tools -g  # 卸载错误的
-> npx skills add noendings/jx-vibe-tools@jx-gzjj -g  # 安装正确的
-> ```
+**主 AI 把控全局 + 辅助 AI 局部分支研究 + 文件接口无缝交接**
 
 ---
 
-## 技能清单
+## 快速开始
 
-| 技能 | 指令 | 功能 |
-|------|------|------|
-| **jx-meta** | `/jx-install-all` | 一键安装全部 JX Vibe Tools |
-| **jx-gzjj** | `/jx-gzjj` | 生成交接文档 |
-| **jx-xrtk** | `/jx-xrtk` | 读取交接文档，继续工作 |
-| **jx-branch** | `/jx-branch-open`<br>`/jx-branch-done`<br>`/jx-merge` | 分支研究完整工作流<br>（开题→研究→归档→合并） |
-| **jx-tone** | `/jx-tone`<br>`/jx-tone-pua` | 口语转结构化 |
+```bash
+# 1. 安装
+npx skills add noendings/jx-vibe-tools -g
+
+# 2. 重启 Claude Code
+Ctrl+C 退出，然后重新运行 claude
+
+# 3. 开始使用
+/jx
+```
 
 ---
 
-## 典型使用流程
+## 功能列表
 
-### 场景：播放器项目中音频解码需要深入研究
+运行 `/jx` 选择功能：
+
+| # | 功能 | 说明 |
+|---|------|------|
+| 1 | **工作交接** | 保存进度，生成交接文档 |
+| 2 | **接手工作** | 读取交接，继续开发 |
+| 3 | **分支研究** | 开启独立研究会话 |
+| 4 | **完成研究** | 归档研究成果 |
+| 5 | **合并成果** | 将研究合并到主项目 |
+| 6 | **口语转结构化** | 整理口语化需求 |
+
+---
+
+## 典型工作流
 
 ```
-# 主窗口（播放器整体架构）
+# 主窗口（播放器架构）
+→ /jx → 3. 分支研究
 → 发现音频解码需要深入研究
-→ /jx-branch-open
 
-# 新窗口（音频专项研究）
+# 新窗口（专项研究）
 → 研究 FFmpeg vs Web Audio API
-→ 对比测试，踩坑记录
-→ /jx-branch-done
+→ 测试、踩坑记录
+→ /jx → 4. 完成研究
 
-# 主窗口（继续播放器开发）
-→ /jx-merge
+# 主窗口（继续开发）
+→ /jx → 5. 合并成果
 → 选择音频研究 → 合并
 → 继续开发
 ```
@@ -113,28 +68,54 @@ npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
 
 ## 目录结构
 
-首次使用任意指令时，自动创建：
+自动创建：
 
 ```
 你的项目/
-├── .jx_skill/              # Git 忽略，不上库
-│   ├── handover/           # 工作交接文档
-│   │   └── time_1_xxx.md
-│   ├── branch_research/    # 分支研究归档
-│   │   ├── research_xxx/   # 临时目录
-│   │   └── 关于xxx的研究/   # 归档目录
-│   └── jx-vibe-tool-log.md # 变更流水
-└── CLAUDE.md               # 研究引用索引
+├── .jx_skill/              # Git 忽略
+│   ├── handover/           # 交接文档
+│   ├── branch_research/    # 研究归档
+│   └── jx-vibe-tool-log.md
+└── jx-project-overview-roadmap.md
 ```
 
 ---
 
-## 技术特点
+## 直接调用子命令
 
-- **文件即接口**：研究以 Markdown 文档形式存在
-- **本地隔离**：`.jx_skill/` Git 忽略，研究成果仅本地
-- **双链关联**：支持 Obsidian `[[文档名]]` 双链语法
-- **螺旋上升**：主分支定型 → 拆分研究 → 合并升级
+也可跳过菜单直接调用：
+
+| 指令 | 功能 |
+|------|------|
+| `/jx-gzjj` | 生成交接文档 |
+| `/jx-xrtk` | 读取交接文档 |
+| `/jx-branch-open` | 开启分支研究 |
+| `/jx-branch-done` | 完成研究归档 |
+| `/jx-merge` | 合并研究成果 |
+| `/jx-tone` | 口语转结构化 |
+
+---
+
+## 安装子命令（如需要）
+
+如果 `/jx-gzjj` 等提示 Unknown command，单独安装：
+
+```bash
+npx skills add noendings/jx-vibe-tools@jx-gzjj -g
+npx skills add noendings/jx-vibe-tools@jx-branch -g
+npx skills add noendings/jx-vibe-tools@jx-tone -g
+```
+
+然后重启 Claude Code。
+
+---
+
+## 为什么需要这个？
+
+- **百万上下文 AI**：把控整体架构
+- **200K 上下文 AI**：深入局部研究
+- **问题**：研究成果如何传递？
+- **解决**：文件接口 + 标准化交接
 
 ---
 
