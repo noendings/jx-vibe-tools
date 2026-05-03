@@ -84,8 +84,7 @@ npx skills add noendings/jx-vibe-tools@jx-meta -g && jx-install-all
 | **jx-meta** | `/jx-install-all` | 一键安装全部 JX Vibe Tools |
 | **jx-gzjj** | `/jx-gzjj` | 生成交接文档 |
 | **jx-xrtk** | `/jx-xrtk` | 读取交接文档，继续工作 |
-| **jx-branch** | `/jx-branch-open`<br>`/jx-branch-done` | 开启/完成分支研究 |
-| **jx-merge** | `/jx-merge` | 合并分支研究成果 |
+| **jx-branch** | `/jx-branch-open`<br>`/jx-branch-done`<br>`/jx-merge` | 分支研究完整工作流<br>（开题→研究→归档→合并） |
 | **jx-tone** | `/jx-tone`<br>`/jx-tone-pua` | 口语转结构化 |
 
 ---
